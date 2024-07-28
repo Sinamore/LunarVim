@@ -49,6 +49,7 @@ M.config = function()
       providers_regex_syntax_allowlist = {},
       -- under_cursor: whether or not to illuminate under the cursor
       under_cursor = true,
+      -- large_file_cutoff = 1000,
     },
   }
 end

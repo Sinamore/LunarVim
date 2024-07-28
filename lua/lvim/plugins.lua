@@ -243,15 +243,15 @@ local core_plugins = {
     enabled = lvim.builtin.breadcrumbs.active,
   },
 
-  {
-    "akinsho/bufferline.nvim",
-    config = function()
-      require("lvim.core.bufferline").setup()
-    end,
-    branch = "main",
-    event = "User FileOpened",
-    enabled = lvim.builtin.bufferline.active,
-  },
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   config = function()
+  --     require("lvim.core.bufferline").setup()
+  --   end,
+  --   branch = "main",
+  --   event = "User FileOpened",
+  --   enabled = lvim.builtin.bufferline.active,
+  -- },
 
   -- Debugging
   {
@@ -323,14 +323,14 @@ local core_plugins = {
     enabled = lvim.builtin.illuminate.active,
   },
 
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    config = function()
-      require("lvim.core.indentlines").setup()
-    end,
-    event = "User FileOpened",
-    enabled = lvim.builtin.indentlines.active,
-  },
+  -- {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   config = function()
+  --     require("lvim.core.indentlines").setup()
+  --   end,
+  --   event = "User FileOpened",
+  --   enabled = lvim.builtin.indentlines.active,
+  -- },
 
   {
     "lunarvim/onedarker.nvim",
@@ -357,6 +357,12 @@ local core_plugins = {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     event = { "FileReadPre", "BufReadPre", "User FileOpened" },
   },
+
+  {
+    "Sinamore/monokai.nvim",
+    branch = "sinamore-home-rules-tmp",
+    opts = {}
+  }
 }
 
 local default_snapshot_path = join_paths(get_lvim_base_dir(), "snapshots", "default.json")

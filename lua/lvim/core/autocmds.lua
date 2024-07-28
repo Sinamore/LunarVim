@@ -149,6 +149,26 @@ function M.load_defaults()
         end,
       },
     },
+    {
+      "FileType",
+      {
+        pattern = "cpp",
+        callback = function()
+          vim.opt_local.shiftwidth = 4
+          vim.opt_local.tabstop = 4
+        end
+      }
+    },
+    {
+      "FileType",
+      {
+        pattern = "c",
+        callback = function()
+          vim.opt_local.shiftwidth = 4
+          vim.opt_local.tabstop = 4
+        end
+      }
+    }
   }
 
   M.define_autocmds(definitions)
