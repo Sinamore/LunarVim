@@ -66,6 +66,16 @@ local defaults = {
     ["]q"] = ":cnext<CR>",
     ["[q"] = ":cprev<CR>",
     ["<C-q>"] = ":call QuickFixToggle()<CR>",
+
+    -- Clear search highlighting
+    ["<Esc><Esc>"] = ":noh<return>",
+
+    -- Copy/paste outside of nvim
+    ["<C-c>"] = "\"+Y",
+    ["<C-v>"] = "\"+p",
+
+    -- Find existing buffers (telescope)
+    ["<Leader><Space>"] = require('telescope.builtin').buffers,
   },
 
   term_mode = {
@@ -74,6 +84,7 @@ local defaults = {
     ["<C-j>"] = "<C-\\><C-N><C-w>j",
     ["<C-k>"] = "<C-\\><C-N><C-w>k",
     ["<C-l>"] = "<C-\\><C-N><C-w>l",
+    ["<C-w><C-w>"] = "<C-\\><C-n>"
   },
 
   visual_mode = {
@@ -83,6 +94,9 @@ local defaults = {
 
     -- ["p"] = '"0p',
     -- ["P"] = '"0P',
+
+    -- Copy outside of nvim
+    ["C-c"] = "\"+y",
   },
 
   visual_block_mode = {
