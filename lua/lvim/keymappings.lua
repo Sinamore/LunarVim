@@ -96,7 +96,7 @@ local defaults = {
     -- ["P"] = '"0P',
 
     -- Copy outside of nvim
-    ["C-c"] = "\"+y",
+    ["<C-c>"] = "\"+y",
   },
 
   visual_block_mode = {
