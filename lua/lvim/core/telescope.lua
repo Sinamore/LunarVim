@@ -66,7 +66,6 @@ function M.config()
     },
     pickers = {
       find_files = {
-        hidden = true,
       },
       live_grep = {
         --@usage don't include the filename in the search results
@@ -91,7 +90,9 @@ function M.config()
         show_moon = true,
       },
       git_files = {
-        hidden = true,
+        -- preview = { timeout = 10 },
+        -- preview = { treesitter = false },
+        -- prompt_title = "no treesit",
         show_untracked = true,
       },
       colorscheme = {
@@ -103,7 +104,8 @@ function M.config()
         fuzzy = true, -- false will only do exact matching
         override_generic_sorter = true, -- override the generic sorter
         override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        -- case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+        case_mode = "ignore_case", -- or "ignore_case" or "respect_case"
       },
     },
   }

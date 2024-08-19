@@ -115,7 +115,7 @@ M.config = function()
       ["c"] = { "<cmd>BufferKill<CR>", "Close Buffer" },
       ["f"] = {
         function()
-          require("lvim.core.telescope.custom-finders").find_project_files { previewer = false }
+          require("lvim.core.telescope.custom-finders").find_project_files { --[[ previewer = false ]] }
         end,
         "Find File",
       },
@@ -124,7 +124,7 @@ M.config = function()
       b = {
         name = "Buffers",
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
-        f = { "<cmd>Telescope buffers previewer=false<cr>", "Find" },
+        f = { "<cmd>Telescope buffers previewer=false<cr>i", "Find" },
         b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
         n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
         W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },

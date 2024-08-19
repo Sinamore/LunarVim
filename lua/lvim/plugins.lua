@@ -358,10 +358,22 @@ local core_plugins = {
     event = { "FileReadPre", "BufReadPre", "User FileOpened" },
   },
 
+	{
+		"moll/vim-bbye",
+		-- opts = {},
+		config = function()
+		end,
+	},
+	{
+		"rhysd/git-messenger.vim",
+		-- opts = {},
+		config = function()
+		end,
+	},
   {
     "Sinamore/monokai.nvim",
     branch = "sinamore-home-rules-tmp",
-    opts = {}
+    opts = {},
   }
 }
 

@@ -75,7 +75,9 @@ local defaults = {
     ["<C-v>"] = "\"+p",
 
     -- Find existing buffers (telescope)
+    -- TODO: fix (not seeing Leader)
     ["<Leader><Space>"] = require('telescope.builtin').buffers,
+
   },
 
   term_mode = {
