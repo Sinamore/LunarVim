@@ -6,6 +6,38 @@ local M = {}
 ---| "ivy"      # see `telescope.themes.get_ivy()`
 ---| "center"   # retain the default telescope theme
 
+local projects = { "aurelian", "brutus", "caesar", "caligula", "cw", "doppelmarius", "incitatus", "justinian", "marius", "titus", "trajan", "triremius" }
+
+local function is_project(name)
+  for _, v in ipairs(projects) do
+    if v == name then
+      return true
+    end
+  end
+  return false
+end
+
+local utils = require "telescope.utils"
+
+local function get_cwd_for_find()
+  local dir = utils.buffer_dir()
+  local currdir = utils.path_tail(dir)
+  while (currdir ~= "") and not is_project(currdir)
+  do
+    dir = string.sub(dir, 1, -string.len(currdir) - 2)
+    if dir ~= "" then
+      currdir = utils.path_tail(dir)
+    else
+      currdir = ""
+    end
+  end
+  if currdir == "" then
+    return utils.buffer_dir()
+  else
+    return string.sub(dir, 1, -string.len(currdir) - 2)
+  end
+end
+
 function M.config()
   local actions = require("lvim.utils.modules").require_on_exported_call "telescope.actions"
   lvim.builtin.telescope = {
@@ -66,6 +98,16 @@ function M.config()
     },
     pickers = {
       find_files = {
+        find_command = function(opts)
+          local find_cmd = opts.default_find_command
+          if opts.additional_args ~= nil then
+            table.insert(find_cmd, opts.additional_args)
+            find_cmd = utils.flatten(find_cmd)
+          end
+          return find_cmd
+        end,
+        default_find_command = { "rg", "--files", "--color", "never" },
+        cwd = get_cwd_for_find(),
       },
       live_grep = {
         --@usage don't include the filename in the search results
