@@ -358,18 +358,37 @@ local core_plugins = {
     event = { "FileReadPre", "BufReadPre", "User FileOpened" },
   },
 
-	{
-		"moll/vim-bbye",
-		-- opts = {},
-		config = function()
-		end,
-	},
-	{
-		"rhysd/git-messenger.vim",
-		-- opts = {},
-		config = function()
-		end,
-	},
+  {
+    "christoomey/vim-tmux-navigator",
+    cmd = {
+      "TmuxNavigateLeft",
+      "TmuxNavigateDown",
+      "TmuxNavigateUp",
+      "TmuxNavigateRight",
+      "TmuxNavigatePrevious",
+      "TmuxNavigatorProcessList",
+    },
+    keys = {
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+    },
+  },
+
+  {
+    "moll/vim-bbye",
+    -- opts = {},
+    config = function()
+    end,
+  },
+  {
+    "rhysd/git-messenger.vim",
+    -- opts = {},
+    config = function()
+    end,
+  },
   {
     "Sinamore/monokai.nvim",
     branch = "sinamore-home-rules-tmp",
