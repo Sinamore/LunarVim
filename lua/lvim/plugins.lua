@@ -394,6 +394,9 @@ local core_plugins = {
     "p00f/clangd_extensions.nvim",
   },
   {
+    "nvim-orgmode/orgmode",
+  },
+  {
     "Sinamore/monokai.nvim",
     branch = "sinamore-home-rules-tmp",
     opts = {},
