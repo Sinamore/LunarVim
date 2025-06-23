@@ -273,6 +273,7 @@ local core_plugins = {
       require("lvim.core.dap").setup_ui()
     end,
     lazy = true,
+    dependencies = { "nvim-neotest/nvim-nio" },
     enabled = lvim.builtin.dap.active,
   },
 
@@ -388,6 +389,9 @@ local core_plugins = {
     -- opts = {},
     config = function()
     end,
+  },
+  {
+    "p00f/clangd_extensions.nvim",
   },
   {
     "Sinamore/monokai.nvim",

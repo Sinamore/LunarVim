@@ -43,27 +43,40 @@ M.config = function()
         },
         -- Use this to override mappings for specific elements
         element_mappings = {},
-        expand_lines = true,
-        layouts = {
-          {
-            elements = {
-              { id = "scopes", size = 0.33 },
-              { id = "breakpoints", size = 0.17 },
-              { id = "stacks", size = 0.25 },
-              { id = "watches", size = 0.25 },
-            },
-            size = 0.33,
-            position = "right",
-          },
-          {
-            elements = {
-              { id = "repl", size = 0.45 },
-              { id = "console", size = 0.55 },
-            },
-            size = 0.27,
-            position = "bottom",
-          },
-        },
+        expand_lines = false, -- was true before, but I get linebreaks now?
+        -- layouts = {
+        --   {
+        --     elements = {
+        --       { id = "scopes", size = 0.33 },
+        --       { id = "breakpoints", size = 0.17 },
+        --       { id = "stacks", size = 0.25 },
+        --       { id = "watches", size = 0.25 },
+        --     },
+        --     size = 0.33,
+        --     position = "right",
+        --   },
+        --   {
+        --     elements = {
+        --       { id = "repl", size = 0.45 },
+        --       { id = "console", size = 0.55 },
+        --     },
+        --     size = 0.27,
+        --     position = "bottom",
+        --   },
+        -- },
+				layouts = {
+					{
+						elements = {
+							{ id = "watches", size = 0.10 },
+							{ id = "scopes", size = 0.20 },
+							{ id = "breakpoints", size = 0.10 },
+							{ id = "stacks", size = 0.25 },
+							{ id = "repl", size = 0.35 },
+						},
+						size = 0.33,
+						position = "right",
+					}
+				},
         controls = {
           enabled = true,
           -- Display controls in this element
@@ -173,5 +186,25 @@ M.setup_ui = function()
     Log:debug "Unable to override dap-ui logging level"
   end
 end
+
+local dap = require("dap")
+dap.adapters.gdb = {
+  type = "executable",
+  command = "/home/romanbaev/gdb-16.2/gdb/gdb",
+  args = { "--data-directory=/home/romanbaev/gdb-16.2/gdb/data-directory", "--interpreter=dap" }
+}
+-- TODO: copy the same for c
+dap.configurations.cpp = {
+  {
+    name = "Launch",
+    type = "gdb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = "${workspaceFolder}",
+    stopAtBeginningOfMainSubprogram = false,
+  }
+}
 
 return M
