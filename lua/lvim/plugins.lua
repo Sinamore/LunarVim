@@ -394,6 +394,9 @@ local core_plugins = {
     "p00f/clangd_extensions.nvim",
   },
   {
+    "junegunn/vim-easy-align",
+  },
+  {
     "nvim-orgmode/orgmode",
   },
   {
